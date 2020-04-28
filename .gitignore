@@ -1,0 +1,8 @@
+__pycache__/
+.vscode/
+migrations/
+node_modules/
+templates/
+venv/
+
+tables.txt
