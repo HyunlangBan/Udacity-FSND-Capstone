@@ -300,7 +300,7 @@ def show_reservations_list_for_restaurant(jwt, rest_id):
                 'reservations': reservation.format(),
                 'customer': customer.format()
             }
-            past_reservations.append(data)
+            upcoming_reservations.append(data)
 
     return jsonify(
         {
