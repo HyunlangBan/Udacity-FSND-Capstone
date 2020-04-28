@@ -51,7 +51,7 @@ def index():
 
 @app.route('/login-results')
 def login_results():
-    return ("check your token")
+    return (self.request.url)
 
 # restaurants
 @app.route('/restaurants')
