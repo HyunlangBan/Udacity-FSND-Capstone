@@ -374,6 +374,24 @@ def edit_upcoming_reservation_submission(jwt, reservation_id):
         )
 
 # customers
+@app.route('/customers')
+@requires_auth('get:customers')
+def get_customers(jwt):
+    customers = Customer.query.all()
+
+    current_customers = []
+
+    for customer in customers:
+        current_customers.append(customer.format)
+
+    return jsonify(
+        {
+            'success': True,
+            'current_customers': current_customers,
+            'total_customers': len(current_customers)
+        }
+    )
+
 @app.route('/customers/create', methods=['POST'])
 @requires_auth('post:customer')
 def create_customer(jwt):
