@@ -382,7 +382,7 @@ def get_customers(jwt):
     current_customers = []
 
     for customer in customers:
-        current_customers.append(customer.format)
+        current_customers.append(customer.format())
 
     return jsonify(
         {
