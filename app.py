@@ -49,7 +49,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return redirect('https://hrban.auth0.com/authorize?audience=reservation&response_type=token&client_id=xnDUNOvj9p9HAkqHLvFabfh5zuwat9uQ&redirect_uri=https://127.0.0.1:8080/login-results')
+        return redirect('https://hrban.auth0.com/authorize?audience=reservation&response_type=token&client_id=xnDUNOvj9p9HAkqHLvFabfh5zuwat9uQ&redirect_uri=https://capstone-reservation-service.herokuapp.com/login-results')
 
     # restaurants
     @app.route('/restaurants')
