@@ -46,8 +46,12 @@ def capacity_check(check_time, rest_id, number):
 
 @app.route('/')
 def index():
-    # return redirect('https://hrban.auth0.com/authorize?audience=reservation&response_type=token&client_id=xnDUNOvj9p9HAkqHLvFabfh5zuwat9uQ&redirect_uri=https://capstone-reservation-service.herokuapp.com/login-results')
-    return ("test")
+    return redirect('https://hrban.auth0.com/authorize?audience=reservation&response_type=token&client_id=xnDUNOvj9p9HAkqHLvFabfh5zuwat9uQ&redirect_uri=https://capstone-reservation-service.herokuapp.com/login-results')
+    # return ("test")
+
+@app.route('/login-results')
+def login_results():
+    return ("check your token")
 
 # restaurants
 @app.route('/restaurants')
