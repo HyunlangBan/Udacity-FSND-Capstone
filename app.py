@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, jsonify, request, abort, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from forms import *
 from models import setup_db, Restaurant, Reservation, Customer, db
 import os
 from datetime import datetime
