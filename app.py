@@ -61,9 +61,11 @@ def get_restaurants_list(jwt):
     current_restaurants = paginate_restaurants(request, selection)
 
     return jsonify(
-        {'restaurants': current_restaurants,
+        {
+            'restaurants': current_restaurants,
             'total_restaurants': len(Restaurant.query.all()),
-            'success': True}
+            'success': True
+        }
     )
 
 @app.route('/restaurants/create', methods=['POST'])
