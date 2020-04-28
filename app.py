@@ -51,7 +51,8 @@ def index():
 
 @app.route('/login-results')
 def login_results():
-    return (self.request.url)
+    url = os.environ['HTTP_HOST']
+    return (url)
 
 # restaurants
 @app.route('/restaurants')
