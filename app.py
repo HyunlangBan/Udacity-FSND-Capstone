@@ -97,7 +97,7 @@ def create_restaurants(jwt):
             'current_restaurants': current_restaurnats,
             'total_restaurants': len(current_restaurnats),
             'success': True,
-            'result': rest.name
+            'created': rest.id
         }
     )
 

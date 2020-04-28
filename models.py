@@ -92,7 +92,11 @@ class Restaurant(db.Model):
             'photo': self.photo,
             'address': self.address,
             'tel': self.tel,
-            'category': self.category
+            'category': self.category,
+            'menu': self.menu,
+            'capacity':self.capacity,
+            'open_time': self.open_time,
+            'close_time': self.close_time
         }
 
 
