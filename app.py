@@ -43,11 +43,10 @@ def capacity_check(check_time, rest_id, number):
         return False
 
 
-
 @app.route('/')
 def index():
     return redirect('https://hrban.auth0.com/authorize?audience=reservation&response_type=token&client_id=xnDUNOvj9p9HAkqHLvFabfh5zuwat9uQ&redirect_uri=https://capstone-reservation-service.herokuapp.com/login-results')
-    # return ("test")
+
 
 @app.route('/login-results')
 def login_results():
@@ -67,6 +66,7 @@ def get_restaurants_list(jwt):
             'success': True
         }
     )
+
 
 @app.route('/restaurants/create', methods=['POST'])
 @requires_auth('post:restaurants')
@@ -103,6 +103,7 @@ def create_restaurants(jwt):
         }
     )
 
+
 @app.route('/restaurants/search', methods=['POST'])
 @requires_auth('search:restaurants')
 def search_restaurants(jwt):
@@ -117,6 +118,7 @@ def search_restaurants(jwt):
             'total_restaurants': len(current_restaurants),
             'success': True}
     )
+
 
 @app.route('/restaurants/<int:rest_id>')
 @requires_auth('get:restaurant')
@@ -135,6 +137,7 @@ def show_restaurant(jwt, rest_id):
                 'rest_id': rest_id
             }
         )
+
 
 @app.route('/restaurants/<int:rest_id>', methods=['DELETE'])
 @requires_auth('delete:restaurant')
@@ -158,6 +161,7 @@ def delete_restaurant(jwt, rest_id):
             'deleted': rest_id
         }
     )
+
 
 @app.route('/restaurants/<int:rest_id>/edit', methods=['PATCH'])
 @requires_auth('edit:restaurant')
@@ -249,6 +253,7 @@ def make_reservations(jwt):
             'success': False
         })
 
+
 @app.route('/reservations/<int:customer_id>')
 @requires_auth('get:reservations')
 def show_reservations_list_for_customer(jwt, customer_id):
@@ -274,6 +279,7 @@ def show_reservations_list_for_customer(jwt, customer_id):
             'upcoming_reservations': upcoming_reservations
         }
     )
+
 
 @app.route('/reservations/<int:rest_id>/owner')
 @requires_auth('check:reservations')
@@ -310,6 +316,7 @@ def show_reservations_list_for_restaurant(jwt, rest_id):
         }
     )
 
+
 @app.route('/reservations/<int:reservation_id>/review', methods=['PATCH'])
 @requires_auth('post:review')
 def review_past_reservations(jwt, reservation_id):
@@ -335,6 +342,7 @@ def review_past_reservations(jwt, reservation_id):
             'success': True
         }
     )
+
 
 @app.route('/reservations/<int:reservation_id>/edit', methods=['PATCH'])
 @requires_auth('edit:reservation')
@@ -394,6 +402,7 @@ def get_customers(jwt):
         }
     )
 
+
 @app.route('/customers/create', methods=['POST'])
 @requires_auth('post:customer')
 def create_customer(jwt):
@@ -416,6 +425,7 @@ def create_customer(jwt):
             'success': True
         }
     )
+
 
 @app.route('/customers/<int:customer_id>/edit', methods=['POST'])
 @requires_auth('edit:customer')
@@ -444,6 +454,7 @@ def edit_customer_submission(jwt, customer_id):
         }
     )
 
+
 @app.route('/customers/<int:customer_id>', methods=['DELETE'])
 @requires_auth('delete:customer')
 def delete_customer(jwt, customer_id):
@@ -470,24 +481,27 @@ def authentification_failed(AuthError):
     return jsonify({
         "success": False,
         "error": AuthError.status_code,
-        "message": "authentification fails"
+        "message": "Authentification Fails"
     }), 401
+
 
 @app.errorhandler(404)
 def authentification_failed(AuthError):
     return jsonify({
         "success": False,
         "error": 404,
-        "message": "resource not found"
+        "message": "Resource Not Found"
     }), 404
+
 
 @app.errorhandler(422)
 def unprocessable(error):
     return jsonify({
         'success': False,
-        'maessage': 'unprocessable',
+        'maessage': 'Not Processable',
         'error': 422
     }), 422
+
 
 @app.errorhandler(405)
 def method_not_allowed(error):
@@ -498,6 +512,7 @@ def method_not_allowed(error):
             'error': 405
         }
     ), 405
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

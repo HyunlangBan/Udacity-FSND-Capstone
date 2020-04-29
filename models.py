@@ -102,7 +102,7 @@ class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     phone = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False)
 
     customer_rsvn = db.relationship('Reservation', backref='customer')
 
