@@ -10,11 +10,8 @@ from models import setup_db, Restaurant, Reservation, Customer
 class RerservationServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "capstone"
-        self.database_path = "postgres://{}/{}".format(
-            'postgres:1234@localhost:5432', self.database_name)
+        self.database_path = os.environ.get('HEROKU_POSTGRESQL_MAROON_URL')
         setup_db(self.app, self.database_path)
 
         self.new_rest = {

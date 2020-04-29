@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 
 
-database_path = os.environ.get('DATABASE_URL')
+database_path = os.environ.get('HEROKU_POSTGRESQL_MAROON_URL')
 
 
 db = SQLAlchemy()
