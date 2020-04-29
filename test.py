@@ -10,8 +10,11 @@ from models import setup_db, Restaurant, Reservation, Customer
 class RerservationServiceTestCase(unittest.TestCase):
 
     def setUp(self):
+        self.app = create_app()
         self.client = self.app.test_client
-        self.database_path = os.environ.get('HEROKU_POSTGRESQL_MAROON_URL')
+        self.database_name = "capstone_test"
+        self.database_path = "postgres://{}/{}".format(
+            'postgres:1234@localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
         self.new_rest = {
@@ -62,7 +65,7 @@ class RerservationServiceTestCase(unittest.TestCase):
             self.db = SQLAlchemy()
             self.db.init_app(self.app)
             # create all tables
-            # self.db.create_all()
+            self.db.create_all()
 
     def tearDown(self):
         pass
